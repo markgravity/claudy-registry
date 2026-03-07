@@ -5,9 +5,15 @@
   "name": "PR Reviewer",
   "description": "Reviews a GitHub pull request for bugs, design issues, and style, then posts a structured summary.",
   "author": "markgravity",
-  "tags": ["git", "code-review", "github", "productivity"],
+  "tags": [
+    "git",
+    "code-review",
+    "github",
+    "productivity"
+  ],
   "iconSF": "checkmark.seal",
   "featured": false,
+  "version": "1.0.0",
   "githubRepo": "markgravity/claudy-registry",
   "githubPath": "plugins/markgravity/pr-reviewer"
 }
