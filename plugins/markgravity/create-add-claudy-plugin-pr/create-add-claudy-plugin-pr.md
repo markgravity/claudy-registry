@@ -5,7 +5,7 @@ description: Create a claudy-registry PR to add a new plugin. Pass a GitHub URL,
 
 # Create Add Claudy Plugin PR
 
-Create a pull request in `~/Repositories/Personal/claudy-registry` for a new plugin.
+Create a pull request in the local `claudy-registry` clone for a new plugin.
 
 ## Usage
 
@@ -16,9 +16,9 @@ Create a pull request in `~/Repositories/Personal/claudy-registry` for a new plu
 **Examples:**
 ```
 /create-add-claudy-plugin-pr https://github.com/upstash/context7-mcp
-/create-add-claudy-plugin-pr /Users/markg/Projects/my-skill/skill.md
+/create-add-claudy-plugin-pr ~/Projects/my-skill/skill.md
 /create-add-claudy-plugin-pr ./my-command.md
-/create-add-claudy-plugin-pr /Users/markg/Projects/my-skill/
+/create-add-claudy-plugin-pr ~/Projects/my-skill/
 ```
 
 ---
@@ -61,9 +61,10 @@ Read the `.md` file content. Infer `id` from the filename (lowercase, hyphenated
 
 This is an inline plugin — the source will live in the registry alongside `plugin.json`. Set:
 ```json
-"githubRepo": "markgravity/claudy-registry",
+"githubRepo": "{REGISTRY_REPO}",
 "githubPath": "plugins/{author}/{id}"
 ```
+where `{REGISTRY_REPO}` is the `owner/repo` of the registry remote (resolved in the setup step).
 
 Resolve `author` by running `gh api user -q '.login'`.
 
@@ -88,7 +89,7 @@ Read all files present:
 
 ### 2. Determine if inline or external
 
-- **Inline**: source will live in the registry. Set `githubRepo: "markgravity/claudy-registry"`, `githubPath: "plugins/{author}/{id}"`. Copy all `.md` files.
+- **Inline**: source will live in the registry. Set `githubRepo: "{REGISTRY_REPO}"`, `githubPath: "plugins/{author}/{id}"`. Copy all `.md` files.
 - **External**: source lives elsewhere. Set `githubRepo`/`githubPath` pointing to the actual repo. Do not copy source files.
 
 Default to **inline** unless the existing `plugin.json` already has a non-registry `githubRepo`.
@@ -100,7 +101,7 @@ Default to **inline** unless the existing `plugin.json` already has a non-regist
 | Field | Required | Notes |
 |-------|----------|-------|
 | `id` | ✓ | Lowercase, hyphenated. For MCPs strip `mcp-`/`-mcp` affixes. Must match the registry directory name. |
-| `marketplaceId` | ✓ | `"{author}/{id}"` for inline; `"{github-username}/{id}"` for external |
+| `marketplaceId` | ✓ | `"{author}"` for inline; `"{github-username}"` for external |
 | `kind` | ✓ | `"mcp"`, `"skill"`, or `"command"` |
 | `name` | ✓ | Human-readable display name. 2–60 chars. |
 | `description` | ✓ | What it does. 10–200 chars. |
@@ -153,7 +154,15 @@ Default to **inline** unless the existing `plugin.json` already has a non-regist
 ## Create Branch, Validate, Commit, and Open PR
 
 ```bash
-REGISTRY=~/Repositories/Personal/claudy-registry
+# Locate the local claudy-registry clone
+REGISTRY=$(find ~ -maxdepth 6 -type d -name "claudy-registry" 2>/dev/null | while read dir; do
+  git -C "$dir" remote get-url origin 2>/dev/null | grep -q "claudy-registry" && echo "$dir" && break
+done | head -1)
+if [ -z "$REGISTRY" ]; then echo "claudy-registry not found locally. Please clone it first."; exit 1; fi
+
+# Derive registry repo (e.g. "markgravity/claudy-registry") from git remote
+REGISTRY_REPO=$(git -C "$REGISTRY" remote get-url origin | sed 's|.*github.com[:/]||' | sed 's|\.git$||')
+
 AUTHOR=$(gh api user -q '.login')
 cd "$REGISTRY"
 git checkout main && git pull origin main
@@ -180,7 +189,7 @@ git push origin "plugin/{author}/{id}"
 Open the PR:
 ```bash
 gh pr create \
-  --repo markgravity/claudy-registry \
+  --repo "$REGISTRY_REPO" \
   --title "[Plugin] Add {Name} {Kind label}" \
   --body "$(cat <<'EOF'
 ## Plugin Submission
