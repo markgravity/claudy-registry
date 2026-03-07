@@ -1,0 +1,13 @@
+{
+  "id": "explain",
+  "marketplaceId": "markgravity/explain",
+  "kind": "command",
+  "name": "Explain Code",
+  "description": "Explains the selected code or current file in plain English, from a high level down to implementation details.",
+  "author": "markgravity",
+  "tags": ["learning", "documentation", "productivity"],
+  "iconSF": "text.magnifyingglass",
+  "featured": false,
+  "githubRepo": "markgravity/claude-code-commands",
+  "githubPath": "commands/explain"
+}
