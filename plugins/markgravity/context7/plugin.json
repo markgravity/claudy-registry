@@ -5,10 +5,19 @@
   "name": "Context7",
   "description": "Fetches up-to-date documentation for any library directly into your Claude context.",
   "author": "markgravity",
-  "tags": ["docs", "mcp", "research", "libraries"],
+  "tags": [
+    "docs",
+    "mcp",
+    "research",
+    "libraries"
+  ],
   "iconSF": "books.vertical",
   "featured": false,
+  "version": "1.0.0",
   "mcpTransport": "stdio",
   "mcpInstallCommand": "npx",
-  "mcpInstallArgs": ["-y", "@upstash/context7-mcp@latest"]
+  "mcpInstallArgs": [
+    "-y",
+    "@upstash/context7-mcp@latest"
+  ]
 }
