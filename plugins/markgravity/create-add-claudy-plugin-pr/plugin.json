@@ -1,6 +1,6 @@
 {
   "id": "create-add-claudy-plugin-pr",
-  "marketplaceId": "markgravity/create-add-claudy-plugin-pr",
+  "marketplaceId": "markgravity",
   "kind": "command",
   "name": "Create Add Claudy Plugin PR",
   "description": "Creates a claudy-registry PR to add a new plugin from a GitHub URL, local .md file, or local directory.",
