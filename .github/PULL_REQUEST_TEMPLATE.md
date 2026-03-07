@@ -8,13 +8,12 @@
 
 ### Checklist
 
-- [ ] `plugin.json` is located at `plugins/{author}/{plugin-id}/plugin.json`
-- [ ] `id` matches the directory name
-- [ ] `author` matches my GitHub username
-- [ ] `marketplaceId` is `{author}/{id}`
-- [ ] No stats fields (`installCount`, `averageRating`, etc.) in `plugin.json`
+- [ ] `manifest.json` is located at `plugins/{org}/{plugin-id}/manifest.json`
+- [ ] `id` is `{plugin-id}@{org}` matching the directory path
+- [ ] `author` matches the org directory (my GitHub username)
+- [ ] No stats fields (`installCount`, `averageRating`, etc.) in `manifest.json`
 - [ ] For MCP plugins: `mcpTransport` is set and transport-specific fields are present
-- [ ] For inline plugins: source files (`.md`) are included alongside `plugin.json`
+- [ ] For inline plugins: source files (`.md`) are included alongside `manifest.json`
 - [ ] `name` is 2–60 characters
 - [ ] `description` is 10–200 characters
 - [ ] `iconSF` is a valid SF Symbols name

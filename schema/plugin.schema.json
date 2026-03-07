@@ -4,17 +4,13 @@
   "title": "Claudy Plugin",
   "description": "Schema for a Claudy marketplace plugin",
   "type": "object",
-  "required": ["id", "marketplaceId", "kind", "name", "description", "author", "tags", "iconSF", "featured", "version"],
+  "required": ["id", "kind", "name", "description", "author", "tags", "iconSF", "featured", "version"],
   "additionalProperties": false,
   "properties": {
     "id": {
       "type": "string",
-      "description": "Plugin identifier — lowercase alphanumeric and hyphens only",
-      "pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]$|^[a-z0-9]$"
-    },
-    "marketplaceId": {
-      "type": "string",
-      "description": "Unique Firestore document ID (typically '{author}/{id}')"
+      "description": "Unique plugin key in 'name@org' format (e.g. 'example-mcp@markgravity')",
+      "pattern": "^[a-z0-9]([a-z0-9-]*[a-z0-9])?@[a-z0-9]([a-z0-9-]*[a-z0-9])?$"
     },
     "kind": {
       "type": "string",
@@ -86,6 +82,13 @@
       "type": "string",
       "description": "URL for http MCP servers",
       "format": "uri"
+    },
+    "requiresEnvVars": {
+      "type": "array",
+      "description": "Environment variable names required by this plugin",
+      "items": {
+        "type": "string"
+      }
     }
   },
   "if": {

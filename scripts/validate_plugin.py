@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
 """
-validate_plugin.py — Validate a Claudy plugin.json file.
+validate_plugin.py — Validate a Claudy manifest.json file.
 
 Usage:
-    python scripts/validate_plugin.py plugins/author/plugin-id/plugin.json [...]
+    python scripts/validate_plugin.py plugins/org/plugin-id/manifest.json [...]
 
 Exits 0 if all files are valid, 1 if any fail.
 """
 
 import json
 import os
+import re
 import sys
 from pathlib import Path
 
@@ -41,7 +42,7 @@ def validate(plugin_path: str, schema: dict) -> list[str]:
     # 2. No stats fields
     found_stats = STATS_FIELDS & set(data.keys())
     if found_stats:
-        errors.append(f"Stats fields must not appear in plugin.json: {sorted(found_stats)}")
+        errors.append(f"Stats fields must not appear in manifest.json: {sorted(found_stats)}")
 
     # 3. JSON Schema compliance
     validator = jsonschema.Draft7Validator(schema)
@@ -54,24 +55,25 @@ def validate(plugin_path: str, schema: dict) -> list[str]:
         # Stop early — structural errors make further checks unreliable
         return errors
 
-    # Derive expected author and id from path: plugins/{author}/{id}/plugin.json
+    # Derive expected org and plugin from path: plugins/{org}/{plugin}/manifest.json
     parts = path.parts
     try:
         plugins_idx = next(i for i, p in enumerate(parts) if p == "plugins")
-        expected_author = parts[plugins_idx + 1]
-        expected_id = parts[plugins_idx + 2]
+        expected_org = parts[plugins_idx + 1]
+        expected_plugin = parts[plugins_idx + 2]
     except (StopIteration, IndexError):
-        errors.append("plugin.json must be located at plugins/{author}/{id}/plugin.json")
+        errors.append("manifest.json must be located at plugins/{org}/{plugin}/manifest.json")
         return errors
 
-    # 4. id matches directory name
+    # 4. id must be "{plugin}@{org}"
+    expected_id = f"{expected_plugin}@{expected_org}"
     if data.get("id") != expected_id:
-        errors.append(f"'id' must match directory name '{expected_id}', got '{data.get('id')}'")
+        errors.append(f"'id' must be '{expected_id}' (derived from path), got '{data.get('id')}'")
 
-    # 5. author matches parent directory
-    if data.get("author") != expected_author:
+    # 5. author matches org directory
+    if data.get("author") != expected_org:
         errors.append(
-            f"'author' must match parent directory '{expected_author}', got '{data.get('author')}'"
+            f"'author' must match org directory '{expected_org}', got '{data.get('author')}'"
         )
 
     kind = data.get("kind")
@@ -85,16 +87,16 @@ def validate(plugin_path: str, schema: dict) -> list[str]:
     if kind == "mcp" and transport == "http" and not data.get("mcpUrl"):
         errors.append("MCP http plugins require 'mcpUrl'")
 
-    # 8. MCP requires mcpTransport (already covered by schema, but explicit here)
+    # 8. MCP requires mcpTransport (also covered by schema)
     if kind == "mcp" and not transport:
         errors.append("MCP plugins require 'mcpTransport'")
 
     github_repo = data.get("githubRepo")
     github_path = data.get("githubPath")
 
-    # 9. Inline githubPath must equal plugins/{author}/{id}
+    # 9. Inline githubPath must equal plugins/{org}/{plugin}
     is_inline = github_repo == "markgravity/claudy-registry"
-    expected_github_path = f"plugins/{expected_author}/{expected_id}"
+    expected_github_path = f"plugins/{expected_org}/{expected_plugin}"
     if is_inline and github_path != expected_github_path:
         errors.append(
             f"Inline plugin 'githubPath' must be '{expected_github_path}', got '{github_path}'"
@@ -110,31 +112,21 @@ def validate(plugin_path: str, schema: dict) -> list[str]:
                 f"Inline {kind} plugin must include at least one .md source file in {plugin_dir}"
             )
 
-    # 11. Inline command must have a .md file (already covered by 10, but explicit)
-    # (No additional check needed beyond #10)
-
-    # 12. githubPath required when githubRepo set
+    # 11. githubPath required when githubRepo set
     if github_repo and not github_path:
         errors.append("'githubPath' is required when 'githubRepo' is set")
 
-    # 13. id format: lowercase alphanumeric + hyphens
-    import re
-    if data.get("id") and not re.match(r"^[a-z0-9][a-z0-9-]*[a-z0-9]$|^[a-z0-9]$", data["id"]):
-        errors.append(
-            f"'id' must be lowercase alphanumeric with hyphens only, got '{data['id']}'"
-        )
-
-    # 14. name length: 2–60 chars (also covered by schema)
+    # 12. name length: 2–60 chars (also covered by schema)
     name = data.get("name", "")
     if not (2 <= len(name) <= 60):
         errors.append(f"'name' must be 2–60 characters, got {len(name)}")
 
-    # 15. description length: 10–200 chars (also covered by schema)
+    # 13. description length: 10–200 chars (also covered by schema)
     desc = data.get("description", "")
     if not (10 <= len(desc) <= 200):
         errors.append(f"'description' must be 10–200 characters, got {len(desc)}")
 
-    # 16. version must be semver format
+    # 14. version must be semver format
     version = data.get("version", "")
     if not re.match(r"^\d+\.\d+\.\d+$", version):
         errors.append(f"'version' must be semver format (e.g. '1.0.0'), got '{version}'")
@@ -144,7 +136,7 @@ def validate(plugin_path: str, schema: dict) -> list[str]:
 
 def main():
     if len(sys.argv) < 2:
-        print("Usage: validate_plugin.py <plugin.json> [...]", file=sys.stderr)
+        print("Usage: validate_plugin.py <manifest.json> [...]", file=sys.stderr)
         sys.exit(1)
 
     schema = load_schema()

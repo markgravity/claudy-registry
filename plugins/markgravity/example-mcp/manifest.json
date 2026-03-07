@@ -1,6 +1,5 @@
 {
-  "id": "example-mcp",
-  "marketplaceId": "markgravity/example-mcp",
+  "id": "example-mcp@markgravity",
   "kind": "mcp",
   "name": "Example MCP Server",
   "description": "An example MCP server plugin demonstrating external-reference plugins in the Claudy registry.",

@@ -5,6 +5,8 @@ sync_to_firestore.py — Full sync of all plugins to Firestore.
 Uses merge=True to upsert metadata while leaving stats fields
 (installCount, averageRating, ratingCount, ratingSum) untouched.
 
+The Firestore document ID is the plugin's `id` field (name@org format).
+
 Environment:
     FIREBASE_SERVICE_ACCOUNT_JSON  — Service account JSON (as a string)
 
@@ -38,7 +40,7 @@ def init_firebase() -> firestore.Client:
 
 
 def find_plugins() -> list[Path]:
-    return sorted(PLUGINS_DIR.glob("*/*/plugin.json"))
+    return sorted(PLUGINS_DIR.glob("*/*/manifest.json"))
 
 
 def load_plugin(path: Path) -> dict:
@@ -60,15 +62,15 @@ def sync(db: firestore.Client, plugins: list[Path]) -> tuple[int, int]:
     for plugin_path in plugins:
         try:
             data = load_plugin(plugin_path)
-            marketplace_id = data.get("marketplaceId")
-            if not marketplace_id:
-                print(f"ERROR: {plugin_path} missing 'marketplaceId'", file=sys.stderr)
+            plugin_id = data.get("id")
+            if not plugin_id:
+                print(f"ERROR: {plugin_path} missing 'id'", file=sys.stderr)
                 errors += 1
                 continue
 
-            doc_ref = collection_ref.document(marketplace_id)
+            doc_ref = collection_ref.document(plugin_id)
             doc_ref.set(data, merge=True)
-            print(f"Synced: {marketplace_id}")
+            print(f"Synced: {plugin_id}")
             synced += 1
         except Exception as e:
             print(f"ERROR syncing {plugin_path}: {e}", file=sys.stderr)

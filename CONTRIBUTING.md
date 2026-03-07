@@ -6,8 +6,8 @@ Thank you for contributing to the Claudy plugin marketplace!
 
 1. **Fork** this repository
 2. **Create** your plugin directory: `plugins/{your-github-username}/{plugin-id}/`
-3. **Add** a `plugin.json` (see field reference below)
-4. **For inline plugins** — add source files (`.md`) alongside `plugin.json`
+3. **Add** a `manifest.json` (see field reference below)
+4. **For inline plugins** — add source files (`.md`) alongside `manifest.json`
 5. **Open a PR** — CI will validate your plugin automatically
 
 ---
@@ -16,9 +16,9 @@ Thank you for contributing to the Claudy plugin marketplace!
 
 ```
 plugins/
-└── {author}/           ← your GitHub username
+└── {org}/              ← your GitHub username
     └── {plugin-id}/    ← lowercase alphanumeric + hyphens
-        ├── plugin.json
+        ├── manifest.json
         └── skill.md    ← inline only (skill/command)
 ```
 
@@ -30,12 +30,11 @@ plugins/
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `id` | string | Must match directory name. Lowercase alphanumeric + hyphens. |
-| `marketplaceId` | string | Must be `{author}/{id}`. |
+| `id` | string | `"{plugin-id}@{org}"` — must match the directory path (e.g. `"my-skill@myusername"`). |
 | `kind` | string | `"mcp"`, `"skill"`, or `"command"` |
 | `name` | string | Display name. 2–60 characters. |
 | `description` | string | What it does. 10–200 characters. |
-| `author` | string | Must match parent directory (your GitHub username). |
+| `author` | string | Must match org directory (your GitHub username). |
 | `tags` | array of strings | At least one tag. Used for search. |
 | `iconSF` | string | SF Symbols name (e.g. `"gear"`, `"network"`). |
 | `featured` | boolean | Set to `false` for community submissions. |
@@ -69,17 +68,17 @@ plugins/
 ```json
 {
   "githubRepo": "markgravity/claudy-registry",
-  "githubPath": "plugins/{author}/{id}"
+  "githubPath": "plugins/{org}/{plugin-id}"
 }
 ```
 
-> Include the `.md` source file alongside `plugin.json` for inline plugins.
+> Include the `.md` source file alongside `manifest.json` for inline plugins.
 
 ---
 
 ## Forbidden Fields
 
-Never include these in `plugin.json` — they are managed by Firestore:
+Never include these in `manifest.json` — they are managed by Firestore:
 
 - `installCount`
 - `averageRating`
@@ -92,10 +91,10 @@ CI will reject any plugin containing these fields.
 
 ## Example: External MCP Plugin
 
+`plugins/myusername/my-mcp-server/manifest.json`:
 ```json
 {
-  "id": "my-mcp-server",
-  "marketplaceId": "myusername/my-mcp-server",
+  "id": "my-mcp-server@myusername",
   "kind": "mcp",
   "name": "My MCP Server",
   "description": "Does something useful via the Model Context Protocol.",
@@ -103,6 +102,7 @@ CI will reject any plugin containing these fields.
   "tags": ["mcp", "utility"],
   "iconSF": "network",
   "featured": false,
+  "version": "1.0.0",
   "mcpTransport": "stdio",
   "mcpInstallCommand": "npx",
   "mcpInstallArgs": ["-y", "@myusername/my-mcp-server@latest"]
@@ -111,11 +111,10 @@ CI will reject any plugin containing these fields.
 
 ## Example: Inline Skill
 
-`plugins/myusername/my-skill/plugin.json`:
+`plugins/myusername/my-skill/manifest.json`:
 ```json
 {
-  "id": "my-skill",
-  "marketplaceId": "myusername/my-skill",
+  "id": "my-skill@myusername",
   "kind": "skill",
   "name": "My Skill",
   "description": "A helpful skill that does something great.",
@@ -123,6 +122,7 @@ CI will reject any plugin containing these fields.
   "tags": ["productivity"],
   "iconSF": "wand.and.stars",
   "featured": false,
+  "version": "1.0.0",
   "githubRepo": "markgravity/claudy-registry",
   "githubPath": "plugins/myusername/my-skill"
 }
@@ -141,7 +141,7 @@ Run the validator locally before opening a PR:
 
 ```bash
 pip install -r scripts/requirements.txt
-python scripts/validate_plugin.py plugins/myusername/my-skill/plugin.json
+python scripts/validate_plugin.py plugins/myusername/my-skill/manifest.json
 ```
 
 ---
@@ -160,6 +160,6 @@ Pick an icon name from [SF Symbols](https://developer.apple.com/sf-symbols/). Co
 
 ## Review Process
 
-1. CI validates your `plugin.json` automatically
+1. CI validates your `manifest.json` automatically
 2. A maintainer reviews the PR
 3. On merge, the plugin is automatically synced to Firestore and appears in the Claudy app

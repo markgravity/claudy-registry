@@ -22,11 +22,10 @@ cd claudy-registry
 # 2. Create your plugin directory
 mkdir -p plugins/YOUR_USERNAME/your-plugin-id
 
-# 3. Create plugin.json (see CONTRIBUTING.md for all fields)
-cat > plugins/YOUR_USERNAME/your-plugin-id/plugin.json << 'EOF'
+# 3. Create manifest.json (see CONTRIBUTING.md for all fields)
+cat > plugins/YOUR_USERNAME/your-plugin-id/manifest.json << 'EOF'
 {
-  "id": "your-plugin-id",
-  "marketplaceId": "YOUR_USERNAME/your-plugin-id",
+  "id": "your-plugin-id@YOUR_USERNAME",
   "kind": "mcp",
   "name": "Your Plugin Name",
   "description": "What your plugin does in one sentence.",
@@ -34,6 +33,7 @@ cat > plugins/YOUR_USERNAME/your-plugin-id/plugin.json << 'EOF'
   "tags": ["your", "tags"],
   "iconSF": "gear",
   "featured": false,
+  "version": "1.0.0",
   "mcpTransport": "stdio",
   "mcpInstallCommand": "npx",
   "mcpInstallArgs": ["-y", "@scope/your-package@latest"]
@@ -42,7 +42,7 @@ EOF
 
 # 4. Validate locally
 pip install -r scripts/requirements.txt
-python scripts/validate_plugin.py plugins/YOUR_USERNAME/your-plugin-id/plugin.json
+python scripts/validate_plugin.py plugins/YOUR_USERNAME/your-plugin-id/manifest.json
 
 # 5. Open a PR
 ```
@@ -51,9 +51,9 @@ python scripts/validate_plugin.py plugins/YOUR_USERNAME/your-plugin-id/plugin.js
 
 ```
 plugins/
-└── {author}/
+└── {org}/
     └── {plugin-id}/
-        ├── plugin.json    ← required
+        ├── manifest.json  ← required
         └── *.md           ← required for inline skill/command plugins
 schema/
 └── plugin.schema.json     ← JSON Schema (source of truth)
@@ -65,7 +65,7 @@ scripts/
 
 ## CI
 
-- **PR opened** → validates all changed `plugin.json` files
+- **PR opened** → validates all changed `manifest.json` files
 - **Merged to main** → syncs all plugins to Firestore (`claudy-129fe`, collection `plugins`)
 
 ## Contributing
