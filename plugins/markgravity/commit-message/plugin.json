@@ -1,0 +1,18 @@
+{
+  "id": "commit-message",
+  "marketplaceId": "markgravity/commit-message",
+  "kind": "skill",
+  "name": "Commit Message",
+  "description": "Generates a conventional commit message from staged changes using git diff --cached.",
+  "author": "markgravity",
+  "tags": [
+    "git",
+    "productivity",
+    "commit"
+  ],
+  "iconSF": "text.badge.checkmark",
+  "featured": false,
+  "version": "1.0.0",
+  "githubRepo": "markgravity/claude-code-skills",
+  "githubPath": "skills/commit-message"
+}
