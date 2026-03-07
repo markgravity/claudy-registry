@@ -154,23 +154,51 @@ Default to **inline** unless the existing `plugin.json` already has a non-regist
 ## Create Branch, Validate, Commit, and Open PR
 
 ```bash
-# Locate the local claudy-registry clone
+AUTHOR=$(gh api user -q '.login')
+UPSTREAM_REPO="markgravity/claudy-registry"
+
+# Check if user has push access to upstream (owner/collaborator vs. contributor)
+HAS_PUSH=$(gh api "repos/$UPSTREAM_REPO" --jq '.permissions.push // false' 2>/dev/null)
+
+# Locate existing local clone (fork or upstream)
 REGISTRY=$(find ~ -maxdepth 6 -type d -name "claudy-registry" 2>/dev/null | while read dir; do
   git -C "$dir" remote get-url origin 2>/dev/null | grep -q "claudy-registry" && echo "$dir" && break
 done | head -1)
-if [ -z "$REGISTRY" ]; then echo "claudy-registry not found locally. Please clone it first."; exit 1; fi
 
-# Derive registry repo (e.g. "markgravity/claudy-registry") from git remote
-REGISTRY_REPO=$(git -C "$REGISTRY" remote get-url origin | sed 's|.*github.com[:/]||' | sed 's|\.git$||')
+if [ "$HAS_PUSH" = "true" ]; then
+  # Collaborator: push directly to upstream
+  PUSH_REPO="$UPSTREAM_REPO"
+  if [ -z "$REGISTRY" ]; then echo "claudy-registry not found locally. Please clone it first."; exit 1; fi
+  cd "$REGISTRY" && git checkout main && git pull origin main
+else
+  # Contributor: fork workflow
+  PUSH_REPO="${AUTHOR}/claudy-registry"
 
-AUTHOR=$(gh api user -q '.login')
-cd "$REGISTRY"
-git checkout main && git pull origin main
+  # Create fork if it doesn't exist yet
+  gh repo fork "$UPSTREAM_REPO" --clone=false 2>/dev/null || true
+
+  if [ -z "$REGISTRY" ]; then
+    # No local clone — clone the fork
+    REGISTRY=~/claudy-registry
+    gh repo clone "$PUSH_REPO" "$REGISTRY"
+  fi
+
+  cd "$REGISTRY"
+
+  # Ensure upstream remote exists for syncing
+  git remote get-url upstream 2>/dev/null || \
+    git remote add upstream "https://github.com/$UPSTREAM_REPO.git"
+
+  # Sync fork's main with upstream
+  git fetch upstream
+  git checkout main && git merge upstream/main
+fi
+
 git checkout -b "plugin/${AUTHOR}/{id}"
 mkdir -p "plugins/${AUTHOR}/{id}"
 ```
 
-Write `plugin.json` using the Write tool. Copy any `.md` source files if inline.
+Write `plugin.json` using the Write tool. Use `$UPSTREAM_REPO` as `githubRepo` (where files land after merge). Copy any `.md` source files if inline.
 
 Validate before committing:
 ```bash
@@ -179,17 +207,19 @@ python scripts/validate_plugin.py "plugins/{author}/{id}/plugin.json"
 
 If validation fails, fix `plugin.json` and re-validate before proceeding.
 
-Commit and push:
+Commit and push to fork (or upstream):
 ```bash
 git add "plugins/{author}/{id}/"
 git commit -m "feat(plugin): add {name}"
 git push origin "plugin/{author}/{id}"
 ```
 
-Open the PR:
+Open the PR targeting upstream:
 ```bash
 gh pr create \
-  --repo "$REGISTRY_REPO" \
+  --repo "$UPSTREAM_REPO" \
+  --head "${AUTHOR}:plugin/${AUTHOR}/{id}" \
+  --base main \
   --title "[Plugin] Add {Name} {Kind label}" \
   --body "$(cat <<'EOF'
 ## Plugin Submission
