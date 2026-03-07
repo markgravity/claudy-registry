@@ -1,0 +1,15 @@
+{
+  "id": "xcode@apple",
+  "kind": "mcp",
+  "name": "Xcode",
+  "description": "Gives agentic coding tools access to Xcode via MCP — build projects, run tests, and search Apple documentation.",
+  "author": "apple",
+  "tags": ["xcode", "ios", "swift", "build", "testing"],
+  "iconSF": "hammer",
+  "featured": false,
+  "version": "1.0.0",
+  "homepageURL": "https://developer.apple.com/documentation/xcode/giving-agentic-coding-tools-access-to-xcode",
+  "mcpTransport": "stdio",
+  "mcpInstallCommand": "xcrun",
+  "mcpInstallArgs": ["mcpbridge"]
+}
