@@ -5,9 +5,14 @@
   "name": "Explain Code",
   "description": "Explains the selected code or current file in plain English, from a high level down to implementation details.",
   "author": "markgravity",
-  "tags": ["learning", "documentation", "productivity"],
+  "tags": [
+    "learning",
+    "documentation",
+    "productivity"
+  ],
   "iconSF": "text.magnifyingglass",
   "featured": false,
+  "version": "1.0.0",
   "githubRepo": "markgravity/claude-code-commands",
   "githubPath": "commands/explain"
 }
