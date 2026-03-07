@@ -100,7 +100,7 @@ Default to **inline** unless the existing `plugin.json` already has a non-regist
 | Field | Required | Notes |
 |-------|----------|-------|
 | `id` | ✓ | Lowercase, hyphenated. For MCPs strip `mcp-`/`-mcp` affixes. Must match the registry directory name. |
-| `marketplaceId` | ✓ | `"markgravity/{id}"` for inline; `"{github-username}/{id}"` for external |
+| `marketplaceId` | ✓ | `"{author}/{id}"` for inline; `"{github-username}/{id}"` for external |
 | `kind` | ✓ | `"mcp"`, `"skill"`, or `"command"` |
 | `name` | ✓ | Human-readable display name. 2–60 chars. |
 | `description` | ✓ | What it does. 10–200 chars. |
