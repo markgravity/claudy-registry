@@ -1,0 +1,19 @@
+{
+  "id": "changelog",
+  "marketplaceId": "markgravity/changelog",
+  "kind": "command",
+  "name": "Changelog",
+  "description": "Generates a user-facing changelog from git history since the last tag or a specified commit.",
+  "author": "markgravity",
+  "tags": [
+    "git",
+    "release",
+    "changelog",
+    "productivity"
+  ],
+  "iconSF": "doc.text.below.ecg",
+  "featured": false,
+  "version": "1.0.0",
+  "githubRepo": "markgravity/claudy-registry",
+  "githubPath": "plugins/markgravity/changelog"
+}
