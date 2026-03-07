@@ -1,0 +1,101 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/markgravity/claudy-registry/schema/plugin.schema.json",
+  "title": "Claudy Plugin",
+  "description": "Schema for a Claudy marketplace plugin",
+  "type": "object",
+  "required": ["id", "marketplaceId", "kind", "name", "description", "author", "tags", "iconSF", "featured"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Plugin identifier — lowercase alphanumeric and hyphens only",
+      "pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]$|^[a-z0-9]$"
+    },
+    "marketplaceId": {
+      "type": "string",
+      "description": "Unique Firestore document ID (typically '{author}/{id}')"
+    },
+    "kind": {
+      "type": "string",
+      "description": "Plugin type",
+      "enum": ["mcp", "skill", "command"]
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name shown in the marketplace",
+      "minLength": 2,
+      "maxLength": 60
+    },
+    "description": {
+      "type": "string",
+      "description": "Short description of what the plugin does",
+      "minLength": 10,
+      "maxLength": 200
+    },
+    "author": {
+      "type": "string",
+      "description": "GitHub username of the plugin author"
+    },
+    "tags": {
+      "type": "array",
+      "description": "Searchable tags",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "iconSF": {
+      "type": "string",
+      "description": "SF Symbols icon name (e.g. 'gear', 'network')"
+    },
+    "featured": {
+      "type": "boolean",
+      "description": "Whether this plugin is featured in the marketplace"
+    },
+    "githubRepo": {
+      "type": "string",
+      "description": "GitHub repository in 'owner/repo' format (required for file-based plugins)"
+    },
+    "githubPath": {
+      "type": "string",
+      "description": "Path within the repo to the plugin files (required when githubRepo is set)"
+    },
+    "mcpTransport": {
+      "type": "string",
+      "description": "MCP transport type (required for kind=mcp)",
+      "enum": ["stdio", "http"]
+    },
+    "mcpInstallCommand": {
+      "type": "string",
+      "description": "Install command for stdio MCP servers (e.g. 'npx', 'uvx')"
+    },
+    "mcpInstallArgs": {
+      "type": "array",
+      "description": "Arguments for the install command",
+      "items": {
+        "type": "string"
+      }
+    },
+    "mcpUrl": {
+      "type": "string",
+      "description": "URL for http MCP servers",
+      "format": "uri"
+    }
+  },
+  "if": {
+    "properties": { "kind": { "const": "mcp" } },
+    "required": ["kind"]
+  },
+  "then": {
+    "required": ["mcpTransport"]
+  },
+  "not": {
+    "anyOf": [
+      { "required": ["installCount"] },
+      { "required": ["averageRating"] },
+      { "required": ["ratingCount"] },
+      { "required": ["ratingSum"] }
+    ]
+  }
+}
