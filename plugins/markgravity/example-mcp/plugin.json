@@ -8,6 +8,7 @@
   "tags": ["example", "mcp", "demo"],
   "iconSF": "network",
   "featured": false,
+  "version": "1.0.0",
   "mcpTransport": "stdio",
   "mcpInstallCommand": "npx",
   "mcpInstallArgs": ["-y", "@example/mcp-server@latest"]

@@ -39,6 +39,7 @@ plugins/
 | `tags` | array of strings | At least one tag. Used for search. |
 | `iconSF` | string | SF Symbols name (e.g. `"gear"`, `"network"`). |
 | `featured` | boolean | Set to `false` for community submissions. |
+| `version` | string | Plugin version in semver format (e.g. `"1.0.0"`). Bump on every change. |
 
 ### MCP plugins (`kind: "mcp"`)
 

@@ -134,6 +134,11 @@ def validate(plugin_path: str, schema: dict) -> list[str]:
     if not (10 <= len(desc) <= 200):
         errors.append(f"'description' must be 10–200 characters, got {len(desc)}")
 
+    # 16. version must be semver format
+    version = data.get("version", "")
+    if not re.match(r"^\d+\.\d+\.\d+$", version):
+        errors.append(f"'version' must be semver format (e.g. '1.0.0'), got '{version}'")
+
     return errors
 
 

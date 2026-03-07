@@ -4,7 +4,7 @@
   "title": "Claudy Plugin",
   "description": "Schema for a Claudy marketplace plugin",
   "type": "object",
-  "required": ["id", "marketplaceId", "kind", "name", "description", "author", "tags", "iconSF", "featured"],
+  "required": ["id", "marketplaceId", "kind", "name", "description", "author", "tags", "iconSF", "featured", "version"],
   "additionalProperties": false,
   "properties": {
     "id": {
@@ -52,6 +52,11 @@
     "featured": {
       "type": "boolean",
       "description": "Whether this plugin is featured in the marketplace"
+    },
+    "version": {
+      "type": "string",
+      "description": "Plugin version in semver format (e.g. '1.0.0')",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
     },
     "githubRepo": {
       "type": "string",
