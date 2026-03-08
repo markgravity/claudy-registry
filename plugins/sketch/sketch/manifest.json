@@ -1,0 +1,14 @@
+{
+  "id": "sketch@sketch",
+  "kind": "mcp",
+  "name": "Sketch",
+  "description": "Interact with Sketch documents from AI clients — capture the current selection as an image and execute SketchAPI code.",
+  "author": "sketch",
+  "tags": ["design", "sketch", "ui", "macos", "code-execution"],
+  "iconSF": "paintbrush",
+  "featured": false,
+  "version": "1.0.0",
+  "homepageURL": "https://www.sketch.com/docs/mcp-server/",
+  "mcpTransport": "http",
+  "mcpUrl": "http://localhost:31126/mcp"
+}
