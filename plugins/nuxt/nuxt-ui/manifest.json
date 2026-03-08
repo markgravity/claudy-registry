@@ -1,0 +1,14 @@
+{
+  "id": "nuxt-ui@nuxt",
+  "kind": "skill",
+  "name": "Nuxt UI",
+  "description": "Teaches AI agents how to build UIs with Nuxt UI v4, covering 125+ accessible components, theming, forms, and layouts with Tailwind CSS.",
+  "author": "nuxt",
+  "tags": ["nuxt", "vue", "ui", "components", "tailwind", "frontend"],
+  "iconSF": "chevron.left.forwardslash.chevron.right",
+  "featured": false,
+  "version": "1.0.0",
+  "homepageURL": "https://ui.nuxt.com/docs/getting-started/ai/skills",
+  "githubRepo": "nuxt/ui",
+  "githubPath": "skills/nuxt-ui"
+}
