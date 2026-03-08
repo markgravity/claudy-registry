@@ -1,0 +1,13 @@
+{
+  "id": "create-add-claudy-plugin-pr@claudy",
+  "kind": "command",
+  "name": "Create Add Claudy Plugin PR",
+  "description": "Create a claudy-registry PR to add a new plugin from a GitHub URL, homepage URL, local .md file, or directory.",
+  "author": "claudy",
+  "tags": ["claudy", "github", "plugin", "pr", "registry"],
+  "iconSF": "arrow.triangle.branch",
+  "featured": false,
+  "version": "1.0.0",
+  "githubRepo": "markgravity/claudy-registry",
+  "githubPath": "plugins/claudy/create-add-claudy-plugin-pr"
+}
