@@ -1,0 +1,16 @@
+{
+  "id": "mcp@stripe",
+  "kind": "mcp",
+  "name": "Stripe",
+  "description": "Interact with the Stripe API — manage customers, payments, subscriptions, and financial data.",
+  "author": "stripe",
+  "tags": ["payments", "billing", "finance", "stripe"],
+  "iconSF": "creditcard",
+  "featured": true,
+  "version": "1.0.0",
+  "homepageURL": "https://github.com/stripe/agent-toolkit",
+  "mcpTransport": "stdio",
+  "mcpInstallCommand": "npx",
+  "mcpInstallArgs": ["-y", "@stripe/mcp"],
+  "requiresEnvVars": ["STRIPE_SECRET_KEY"]
+}

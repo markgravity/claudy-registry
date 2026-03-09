@@ -1,0 +1,16 @@
+{
+  "id": "tavily-mcp@tavily-ai",
+  "kind": "mcp",
+  "name": "Tavily",
+  "description": "AI-optimised web search and research — retrieve accurate, real-time answers from across the web.",
+  "author": "tavily-ai",
+  "tags": ["search", "web", "research", "ai"],
+  "iconSF": "magnifyingglass.circle",
+  "featured": true,
+  "version": "1.0.0",
+  "homepageURL": "https://github.com/tavily-ai/tavily-mcp",
+  "mcpTransport": "stdio",
+  "mcpInstallCommand": "npx",
+  "mcpInstallArgs": ["-y", "tavily-mcp@latest"],
+  "requiresEnvVars": ["TAVILY_API_KEY"]
+}

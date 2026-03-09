@@ -1,0 +1,16 @@
+{
+  "id": "notion-mcp-server@makenotion",
+  "kind": "mcp",
+  "name": "Notion",
+  "description": "Interact with Notion pages, databases, and workspaces — read, search, and create content.",
+  "author": "makenotion",
+  "tags": ["notion", "notes", "productivity", "knowledge"],
+  "iconSF": "note.text",
+  "featured": true,
+  "version": "1.0.0",
+  "homepageURL": "https://github.com/makenotion/notion-mcp-server",
+  "mcpTransport": "stdio",
+  "mcpInstallCommand": "npx",
+  "mcpInstallArgs": ["-y", "@notionhq/notion-mcp-server"],
+  "requiresEnvVars": ["NOTION_TOKEN"]
+}

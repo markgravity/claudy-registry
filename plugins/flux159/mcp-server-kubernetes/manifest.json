@@ -1,0 +1,15 @@
+{
+  "id": "mcp-server-kubernetes@flux159",
+  "kind": "mcp",
+  "name": "Kubernetes",
+  "description": "Connect to Kubernetes clusters to manage pods, deployments, services, and other resources.",
+  "author": "flux159",
+  "tags": ["kubernetes", "k8s", "devops", "containers", "cloud"],
+  "iconSF": "cube.box",
+  "featured": false,
+  "version": "1.0.0",
+  "homepageURL": "https://github.com/Flux159/mcp-server-kubernetes",
+  "mcpTransport": "stdio",
+  "mcpInstallCommand": "npx",
+  "mcpInstallArgs": ["-y", "mcp-server-kubernetes"]
+}

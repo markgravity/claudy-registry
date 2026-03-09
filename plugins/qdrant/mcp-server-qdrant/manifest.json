@@ -1,0 +1,16 @@
+{
+  "id": "mcp-server-qdrant@qdrant",
+  "kind": "mcp",
+  "name": "Qdrant",
+  "description": "Semantic memory layer built on Qdrant — store, search, and retrieve vector embeddings.",
+  "author": "qdrant",
+  "tags": ["vector-search", "embeddings", "rag", "semantic-search"],
+  "iconSF": "cylinder.split.1x2",
+  "featured": false,
+  "version": "1.0.0",
+  "homepageURL": "https://github.com/qdrant/mcp-server-qdrant",
+  "mcpTransport": "stdio",
+  "mcpInstallCommand": "uvx",
+  "mcpInstallArgs": ["mcp-server-qdrant"],
+  "requiresEnvVars": ["QDRANT_URL"]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "mcp-grafana@grafana",
+  "kind": "mcp",
+  "name": "Grafana",
+  "description": "Search dashboards and query datasources, logs, and metrics in your Grafana instance.",
+  "author": "grafana",
+  "tags": ["monitoring", "dashboards", "metrics", "observability"],
+  "iconSF": "chart.xyaxis.line",
+  "featured": false,
+  "version": "1.0.0",
+  "homepageURL": "https://github.com/grafana/mcp-grafana",
+  "mcpTransport": "stdio",
+  "mcpInstallCommand": "uvx",
+  "mcpInstallArgs": ["mcp-grafana"],
+  "requiresEnvVars": ["GRAFANA_URL", "GRAFANA_SERVICE_ACCOUNT_TOKEN"]
+}

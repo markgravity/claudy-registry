@@ -1,0 +1,16 @@
+{
+  "id": "mcp-linear@tacticlaunch",
+  "kind": "mcp",
+  "name": "Linear",
+  "description": "Manage Linear issues, projects, and teams — create, update, and query your engineering workflows.",
+  "author": "tacticlaunch",
+  "tags": ["project-management", "issues", "engineering", "productivity"],
+  "iconSF": "checklist",
+  "featured": false,
+  "version": "1.0.0",
+  "homepageURL": "https://github.com/tacticlaunch/mcp-linear",
+  "mcpTransport": "stdio",
+  "mcpInstallCommand": "npx",
+  "mcpInstallArgs": ["-y", "@tacticlaunch/mcp-linear"],
+  "requiresEnvVars": ["LINEAR_API_TOKEN"]
+}
