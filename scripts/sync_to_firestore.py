@@ -40,6 +40,17 @@ def init_firebase() -> firestore.Client:
 
 
 def find_plugins() -> list[Path]:
+    changed = os.environ.get("CHANGED_MANIFESTS", "").strip()
+    if changed:
+        paths = []
+        for rel in changed.split(":"):
+            rel = rel.strip()
+            if rel:
+                p = PLUGINS_DIR.parent / rel
+                if p.exists():
+                    paths.append(p)
+        if paths:
+            return paths
     return sorted(PLUGINS_DIR.glob("*/*/manifest.json"))
 
 
