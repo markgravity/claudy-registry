@@ -8,6 +8,7 @@
   "iconSF": "arrow.triangle.branch",
   "featured": false,
   "version": "1.0.0",
-  "githubRepo": "markgravity/claudy-registry",
-  "githubPath": "plugins/claudy/create-add-claudy-plugin-pr"
+  "gitURL": "https://github.com/markgravity/claudy-registry",
+  "gitBranch": "main",
+  "gitPath": "plugins/claudy/create-add-claudy-plugin-pr"
 }

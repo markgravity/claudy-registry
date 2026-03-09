@@ -52,20 +52,29 @@
     "version": {
       "type": "string",
       "description": "Plugin version in semver format (e.g. '1.0.0')",
-      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+      "pattern": "^\d+\.\d+\.\d+$"
     },
     "homepageURL": {
       "type": "string",
       "description": "URL for the plugin's homepage or documentation",
       "format": "uri"
     },
-    "githubRepo": {
+    "gitURL": {
       "type": "string",
-      "description": "GitHub repository in 'owner/repo' format (required for file-based plugins)"
+      "description": "Full git repository URL (e.g. 'https://github.com/owner/repo')",
+      "format": "uri"
     },
-    "githubPath": {
+    "gitBranch": {
       "type": "string",
-      "description": "Path within the repo to the plugin files (required when githubRepo is set)"
+      "description": "Branch to download from (required with gitURL if no gitTag)"
+    },
+    "gitTag": {
+      "type": "string",
+      "description": "Tag to download from (required with gitURL if no gitBranch)"
+    },
+    "gitPath": {
+      "type": "string",
+      "description": "Subdirectory within the repo to use as plugin root"
     },
     "mcpTransport": {
       "type": "string",
