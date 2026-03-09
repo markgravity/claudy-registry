@@ -1,0 +1,15 @@
+{
+  "id": "server-git@modelcontextprotocol",
+  "kind": "mcp",
+  "name": "Git",
+  "description": "Read, search, and manipulate local Git repositories — inspect history, diffs, branches, and commits.",
+  "author": "modelcontextprotocol",
+  "tags": ["git", "version-control", "repositories", "history"],
+  "iconSF": "arrow.triangle.branch",
+  "featured": false,
+  "version": "1.0.0",
+  "homepageURL": "https://github.com/modelcontextprotocol/servers/tree/main/src/git",
+  "mcpTransport": "stdio",
+  "mcpInstallCommand": "uvx",
+  "mcpInstallArgs": ["mcp-server-git"]
+}

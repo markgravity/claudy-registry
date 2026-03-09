@@ -1,0 +1,16 @@
+{
+  "id": "firecrawl-mcp@firecrawl",
+  "kind": "mcp",
+  "name": "Firecrawl",
+  "description": "Turn any website into clean, structured data — scrape, crawl, and search the web for LLM consumption.",
+  "author": "firecrawl",
+  "tags": ["scraping", "web", "crawling", "search", "data-extraction"],
+  "iconSF": "flame",
+  "featured": true,
+  "version": "1.0.0",
+  "homepageURL": "https://github.com/firecrawl/firecrawl-mcp-server",
+  "mcpTransport": "stdio",
+  "mcpInstallCommand": "npx",
+  "mcpInstallArgs": ["-y", "firecrawl-mcp"],
+  "requiresEnvVars": ["FIRECRAWL_API_KEY"]
+}

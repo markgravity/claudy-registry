@@ -1,0 +1,15 @@
+{
+  "id": "server-time@modelcontextprotocol",
+  "kind": "mcp",
+  "name": "Time",
+  "description": "Get the current time and perform timezone conversions for any location or IANA timezone identifier.",
+  "author": "modelcontextprotocol",
+  "tags": ["time", "timezone", "datetime", "clock"],
+  "iconSF": "clock",
+  "featured": false,
+  "version": "1.0.0",
+  "homepageURL": "https://github.com/modelcontextprotocol/servers/tree/main/src/time",
+  "mcpTransport": "stdio",
+  "mcpInstallCommand": "uvx",
+  "mcpInstallArgs": ["mcp-server-time"]
+}

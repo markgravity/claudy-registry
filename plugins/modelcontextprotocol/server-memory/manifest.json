@@ -1,0 +1,15 @@
+{
+  "id": "server-memory@modelcontextprotocol",
+  "kind": "mcp",
+  "name": "Memory",
+  "description": "Persistent knowledge graph memory — store and recall facts, entities, and relationships across conversations.",
+  "author": "modelcontextprotocol",
+  "tags": ["memory", "knowledge-graph", "persistence", "recall"],
+  "iconSF": "memorychip",
+  "featured": false,
+  "version": "1.0.0",
+  "homepageURL": "https://github.com/modelcontextprotocol/servers/tree/main/src/memory",
+  "mcpTransport": "stdio",
+  "mcpInstallCommand": "npx",
+  "mcpInstallArgs": ["-y", "@modelcontextprotocol/server-memory"]
+}
