@@ -1,0 +1,16 @@
+{
+  "id": "server-github@modelcontextprotocol",
+  "kind": "mcp",
+  "name": "GitHub",
+  "description": "Access the GitHub API — manage repositories, issues, pull requests, branches, and file contents.",
+  "author": "modelcontextprotocol",
+  "tags": ["github", "repositories", "issues", "pull-requests", "code"],
+  "iconSF": "curlybraces",
+  "featured": true,
+  "version": "1.0.0",
+  "homepageURL": "https://github.com/modelcontextprotocol/servers/tree/main/src/github",
+  "mcpTransport": "stdio",
+  "mcpInstallCommand": "npx",
+  "mcpInstallArgs": ["-y", "@modelcontextprotocol/server-github"],
+  "requiresEnvVars": ["GITHUB_PERSONAL_ACCESS_TOKEN"]
+}

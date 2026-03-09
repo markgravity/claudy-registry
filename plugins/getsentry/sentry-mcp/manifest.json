@@ -1,0 +1,16 @@
+{
+  "id": "sentry-mcp@getsentry",
+  "kind": "mcp",
+  "name": "Sentry",
+  "description": "Query Sentry error tracking — view issues, stack traces, and release health for your projects.",
+  "author": "getsentry",
+  "tags": ["monitoring", "errors", "debugging", "observability"],
+  "iconSF": "exclamationmark.triangle",
+  "featured": false,
+  "version": "1.0.0",
+  "homepageURL": "https://github.com/getsentry/sentry-mcp",
+  "mcpTransport": "stdio",
+  "mcpInstallCommand": "npx",
+  "mcpInstallArgs": ["-y", "@sentry/mcp-server@latest"],
+  "requiresEnvVars": ["SENTRY_ACCESS_TOKEN"]
+}
