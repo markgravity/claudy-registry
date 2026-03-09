@@ -1,0 +1,15 @@
+{
+  "id": "server-sequential-thinking@modelcontextprotocol",
+  "kind": "mcp",
+  "name": "Sequential Thinking",
+  "description": "Dynamic, reflective problem-solving through structured thinking steps and chain-of-thought reasoning.",
+  "author": "modelcontextprotocol",
+  "tags": ["reasoning", "thinking", "problem-solving", "chain-of-thought"],
+  "iconSF": "arrow.triangle.path.clockwise",
+  "featured": true,
+  "version": "1.0.0",
+  "homepageURL": "https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking",
+  "mcpTransport": "stdio",
+  "mcpInstallCommand": "npx",
+  "mcpInstallArgs": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+}

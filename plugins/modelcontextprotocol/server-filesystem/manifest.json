@@ -1,0 +1,15 @@
+{
+  "id": "server-filesystem@modelcontextprotocol",
+  "kind": "mcp",
+  "name": "Filesystem",
+  "description": "Secure file system operations — read, write, move, and search files with configurable access controls.",
+  "author": "modelcontextprotocol",
+  "tags": ["filesystem", "files", "read", "write"],
+  "iconSF": "folder",
+  "featured": true,
+  "version": "1.0.0",
+  "homepageURL": "https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem",
+  "mcpTransport": "stdio",
+  "mcpInstallCommand": "npx",
+  "mcpInstallArgs": ["-y", "@modelcontextprotocol/server-filesystem"]
+}

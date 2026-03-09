@@ -1,0 +1,15 @@
+{
+  "id": "server-fetch@modelcontextprotocol",
+  "kind": "mcp",
+  "name": "Fetch",
+  "description": "Fetch and convert web pages and APIs to Markdown or text, optimised for LLM context usage.",
+  "author": "modelcontextprotocol",
+  "tags": ["fetch", "web", "http", "scraping", "markdown"],
+  "iconSF": "arrow.down.circle",
+  "featured": false,
+  "version": "1.0.0",
+  "homepageURL": "https://github.com/modelcontextprotocol/servers/tree/main/src/fetch",
+  "mcpTransport": "stdio",
+  "mcpInstallCommand": "uvx",
+  "mcpInstallArgs": ["mcp-server-fetch"]
+}

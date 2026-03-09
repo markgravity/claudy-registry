@@ -1,0 +1,15 @@
+{
+  "id": "playwright-mcp@microsoft",
+  "kind": "mcp",
+  "name": "Playwright",
+  "description": "Browser automation via Playwright — interact with web pages through accessibility snapshots without needing screenshots.",
+  "author": "microsoft",
+  "tags": ["browser", "automation", "playwright", "testing", "web"],
+  "iconSF": "globe",
+  "featured": true,
+  "version": "1.0.0",
+  "homepageURL": "https://github.com/microsoft/playwright-mcp",
+  "mcpTransport": "stdio",
+  "mcpInstallCommand": "npx",
+  "mcpInstallArgs": ["@playwright/mcp@latest"]
+}
