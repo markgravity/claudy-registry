@@ -9,6 +9,7 @@
   "featured": false,
   "version": "1.0.0",
   "homepageURL": "https://ui.nuxt.com/docs/getting-started/ai/skills",
-  "githubRepo": "nuxt/ui",
-  "githubPath": "skills/nuxt-ui"
+  "gitURL": "https://github.com/nuxt/ui",
+  "gitBranch": "main",
+  "gitPath": "skills/nuxt-ui"
 }
