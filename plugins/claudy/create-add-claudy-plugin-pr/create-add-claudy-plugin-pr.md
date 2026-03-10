@@ -47,7 +47,7 @@ For `https://github.com/owner/repo`:
 
 Use README and package metadata to fill all fields (see Field Guide).
 
-The plugin references its source via `githubRepo`/`githubPath` — it is **not** inline.
+The plugin references its source via `gitURL`/`gitBranch`/`gitPath` — it is **not** inline.
 
 ---
 
@@ -63,7 +63,7 @@ Use WebFetch to retrieve the page content. Extract:
 - Kind: if the page describes an MCP server → `"mcp"`; if it describes a CLI skill or prompt → `"skill"` or `"command"`; default to `"mcp"` for developer tools/APIs
 - Install method: look for npm package names, `npx`/`uvx` commands, HTTP endpoint URLs
 - Any required environment variables (API keys, tokens)
-- A GitHub repo URL if linked anywhere on the page — use it to populate `githubRepo`/`githubPath` if it's a file-based plugin; set as `homepageURL` otherwise
+- A GitHub repo URL if linked anywhere on the page — use it to populate `gitURL`/`gitBranch`/`gitPath` if it's a file-based plugin; set as `homepageURL` otherwise
 
 ### 2. Derive org and slug
 
@@ -99,8 +99,9 @@ Read the `.md` file content. Infer the plugin slug from the filename (lowercase,
 
 This is an inline plugin — the source will live in the registry alongside `manifest.json`. Set:
 ```json
-"githubRepo": "{REGISTRY_REPO}",
-"githubPath": "plugins/{author}/{slug}"
+"gitURL": "https://github.com/{REGISTRY_REPO}",
+"gitBranch": "main",
+"gitPath": "plugins/{author}/{slug}"
 ```
 where `{REGISTRY_REPO}` is the `owner/repo` of the registry remote (resolved in the setup step).
 
@@ -127,10 +128,10 @@ Read all files present:
 
 ### 2. Determine if inline or external
 
-- **Inline**: source will live in the registry. Set `githubRepo: "{REGISTRY_REPO}"`, `githubPath: "plugins/{author}/{slug}"`. Copy all `.md` files.
-- **External**: source lives elsewhere. Set `githubRepo`/`githubPath` pointing to the actual repo. Do not copy source files.
+- **Inline**: source will live in the registry. Set `gitURL: "https://github.com/{REGISTRY_REPO}"`, `gitBranch: "main"`, `gitPath: "plugins/{author}/{slug}"`. Copy all `.md` files.
+- **External**: source lives elsewhere. Set `gitURL`/`gitBranch`/`gitPath` pointing to the actual repo. Do not copy source files.
 
-Default to **inline** unless the existing `manifest.json` already has a non-registry `githubRepo`.
+Default to **inline** unless the existing `manifest.json` already has a non-registry `gitURL`.
 
 ---
 
@@ -153,11 +154,15 @@ Default to **inline** unless the existing `manifest.json` already has a non-regi
 | `mcpInstallArgs` | stdio MCPs | e.g. `["-y", "@scope/package@latest"]` for npx, `["package-name"]` for uvx |
 | `mcpUrl` | http MCPs | The HTTP endpoint URL |
 | `requiresEnvVars` | optional | Array of required env var names, e.g. `["GITHUB_TOKEN"]` |
-| `githubRepo` | file-based | `"owner/repo"` format |
-| `githubPath` | file-based | Path to skill/command files within the repo |
+| `gitURL` | file-based | Full repo URL, e.g. `"https://github.com/owner/repo"` |
+| `gitBranch` | if gitURL & no gitTag | Branch name, e.g. `"main"` |
+| `gitTag` | if gitURL & no gitBranch | Tag, e.g. `"v1.2.0"` |
+| `gitPath` | optional | Subdirectory within the repo, e.g. `"skills/docx"` |
+
+If `gitURL` is specified, at least one of `gitBranch` or `gitTag` must be provided.
 
 **Field ordering in manifest.json:**
-`id`, `kind`, `name`, `description`, `author`, `tags`, `iconSF`, `featured`, `version`, then optional fields: `homepageURL`, `mcpTransport`, `mcpInstallCommand`, `mcpInstallArgs`, `mcpUrl`, `requiresEnvVars`, `githubRepo`, `githubPath`.
+`id`, `kind`, `name`, `description`, `author`, `tags`, `iconSF`, `featured`, `version`, then optional fields: `homepageURL`, `mcpTransport`, `mcpInstallCommand`, `mcpInstallArgs`, `mcpUrl`, `requiresEnvVars`, `gitURL`, `gitBranch`, `gitTag`, `gitPath`.
 
 **Icon Guide:**
 
@@ -236,7 +241,7 @@ git checkout -b "plugin/${AUTHOR}/${SLUG}"
 mkdir -p "plugins/${AUTHOR}/${SLUG}"
 ```
 
-Write `manifest.json` to `plugins/{author}/{slug}/manifest.json` using the Write tool. Use `$UPSTREAM_REPO` as `githubRepo` for inline plugins (where files land after merge). Copy any `.md` source files if inline.
+Write `manifest.json` to `plugins/{author}/{slug}/manifest.json` using the Write tool. For inline plugins use `gitURL: "https://github.com/$UPSTREAM_REPO"`, `gitBranch: "main"`, `gitPath: "plugins/{author}/{slug}"` (where files land after merge). Copy any `.md` source files if inline.
 
 Validate before committing:
 ```bash
