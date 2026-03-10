@@ -1,0 +1,15 @@
+{
+  "id": "expo-deployment@expo",
+  "kind": "skill",
+  "name": "Expo Deployment",
+  "description": "Deploy Expo apps to the App Store and Google Play using EAS Build, EAS Submit, and OTA updates.",
+  "author": "expo",
+  "tags": ["expo", "deployment", "eas", "app-store", "mobile"],
+  "iconSF": "arrow.up.to.line",
+  "featured": false,
+  "version": "1.0.0",
+  "homepageURL": "https://github.com/expo/skills",
+  "gitURL": "https://github.com/expo/skills",
+  "gitBranch": "main",
+  "gitPath": "plugins/expo-deployment"
+}

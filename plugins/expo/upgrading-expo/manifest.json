@@ -1,0 +1,15 @@
+{
+  "id": "upgrading-expo@expo",
+  "kind": "skill",
+  "name": "Upgrading Expo",
+  "description": "Upgrade your Expo SDK version safely — handles breaking changes, dependency updates, and migration steps.",
+  "author": "expo",
+  "tags": ["expo", "upgrade", "migration", "react-native", "sdk"],
+  "iconSF": "arrow.2.circlepath",
+  "featured": false,
+  "version": "1.0.0",
+  "homepageURL": "https://github.com/expo/skills",
+  "gitURL": "https://github.com/expo/skills",
+  "gitBranch": "main",
+  "gitPath": "plugins/upgrading-expo"
+}

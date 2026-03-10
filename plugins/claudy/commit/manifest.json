@@ -1,0 +1,14 @@
+{
+  "id": "commit@claudy",
+  "kind": "command",
+  "name": "Commit",
+  "description": "Stage changes and create a well-formatted Conventional Commit message based on the current git diff.",
+  "author": "claudy",
+  "tags": ["git", "commit", "conventional-commits", "workflow"],
+  "iconSF": "checkmark.circle",
+  "featured": true,
+  "version": "1.0.0",
+  "gitURL": "https://github.com/markgravity/claudy-registry",
+  "gitBranch": "main",
+  "gitPath": "plugins/claudy/commit"
+}

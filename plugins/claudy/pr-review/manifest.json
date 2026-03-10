@@ -1,0 +1,14 @@
+{
+  "id": "pr-review@claudy",
+  "kind": "command",
+  "name": "PR Review",
+  "description": "Review the current pull request and provide structured feedback on correctness, security, and code quality.",
+  "author": "claudy",
+  "tags": ["git", "pull-request", "code-review", "github", "workflow"],
+  "iconSF": "eye.circle",
+  "featured": true,
+  "version": "1.0.0",
+  "gitURL": "https://github.com/markgravity/claudy-registry",
+  "gitBranch": "main",
+  "gitPath": "plugins/claudy/pr-review"
+}

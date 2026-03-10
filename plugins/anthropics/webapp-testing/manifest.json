@@ -1,0 +1,15 @@
+{
+  "id": "webapp-testing@anthropics",
+  "kind": "skill",
+  "name": "Web App Testing",
+  "description": "Test local web applications using Playwright — explore, interact, assert behavior, and catch regressions.",
+  "author": "anthropics",
+  "tags": ["testing", "playwright", "web", "automation", "qa"],
+  "iconSF": "checkmark.seal",
+  "featured": false,
+  "version": "1.0.0",
+  "homepageURL": "https://github.com/anthropics/skills/tree/main/skills/webapp-testing",
+  "gitURL": "https://github.com/anthropics/skills",
+  "gitBranch": "main",
+  "gitPath": "skills/webapp-testing"
+}

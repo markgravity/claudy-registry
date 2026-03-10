@@ -1,0 +1,15 @@
+{
+  "id": "mcp-builder@anthropics",
+  "kind": "skill",
+  "name": "MCP Builder",
+  "description": "Step-by-step guide for building high-quality MCP servers to integrate any external API or data source.",
+  "author": "anthropics",
+  "tags": ["mcp", "development", "api", "integration", "server"],
+  "iconSF": "network",
+  "featured": true,
+  "version": "1.0.0",
+  "homepageURL": "https://github.com/anthropics/skills/tree/main/skills/mcp-builder",
+  "gitURL": "https://github.com/anthropics/skills",
+  "gitBranch": "main",
+  "gitPath": "skills/mcp-builder"
+}

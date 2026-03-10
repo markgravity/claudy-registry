@@ -1,0 +1,15 @@
+{
+  "id": "web-artifacts-builder@anthropics",
+  "kind": "skill",
+  "name": "Web Artifacts Builder",
+  "description": "Build complex interactive artifacts using React, Tailwind CSS, and shadcn/ui with great visual design.",
+  "author": "anthropics",
+  "tags": ["react", "tailwind", "artifacts", "frontend", "shadcn"],
+  "iconSF": "wrench.and.screwdriver",
+  "featured": true,
+  "version": "1.0.0",
+  "homepageURL": "https://github.com/anthropics/skills/tree/main/skills/web-artifacts-builder",
+  "gitURL": "https://github.com/anthropics/skills",
+  "gitBranch": "main",
+  "gitPath": "skills/web-artifacts-builder"
+}
