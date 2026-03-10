@@ -1,0 +1,15 @@
+{
+  "id": "pptx@anthropics",
+  "kind": "skill",
+  "name": "PowerPoint",
+  "description": "Build and edit PowerPoint presentations with slide layouts, charts, images, and speaker notes.",
+  "author": "anthropics",
+  "tags": ["powerpoint", "presentations", "slides", "office"],
+  "iconSF": "rectangle.on.rectangle",
+  "featured": true,
+  "version": "1.0.0",
+  "homepageURL": "https://github.com/anthropics/skills/tree/main/skills/pptx",
+  "gitURL": "https://github.com/anthropics/skills",
+  "gitBranch": "main",
+  "gitPath": "skills/pptx"
+}

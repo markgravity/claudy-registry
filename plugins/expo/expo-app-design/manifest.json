@@ -1,0 +1,15 @@
+{
+  "id": "expo-app-design@expo",
+  "kind": "skill",
+  "name": "Expo App Design",
+  "description": "Design beautiful React Native UIs — layout, styling, navigation, and component architecture for Expo apps.",
+  "author": "expo",
+  "tags": ["expo", "react-native", "design", "ui", "mobile"],
+  "iconSF": "iphone",
+  "featured": false,
+  "version": "1.0.0",
+  "homepageURL": "https://github.com/expo/skills",
+  "gitURL": "https://github.com/expo/skills",
+  "gitBranch": "main",
+  "gitPath": "plugins/expo-app-design"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "claude-api@anthropics",
+  "kind": "skill",
+  "name": "Claude API",
+  "description": "Write applications and integrations using the Claude API and Anthropic SDK — tools, streaming, and vision.",
+  "author": "anthropics",
+  "tags": ["claude", "api", "anthropic", "sdk", "llm"],
+  "iconSF": "cloud",
+  "featured": true,
+  "version": "1.0.0",
+  "homepageURL": "https://github.com/anthropics/skills/tree/main/skills/claude-api",
+  "gitURL": "https://github.com/anthropics/skills",
+  "gitBranch": "main",
+  "gitPath": "skills/claude-api"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "xlsx@anthropics",
+  "kind": "skill",
+  "name": "Excel",
+  "description": "Create and manipulate Excel spreadsheets with formulas, pivot tables, charts, and data analysis.",
+  "author": "anthropics",
+  "tags": ["excel", "spreadsheets", "data", "formulas", "office"],
+  "iconSF": "tablecells",
+  "featured": true,
+  "version": "1.0.0",
+  "homepageURL": "https://github.com/anthropics/skills/tree/main/skills/xlsx",
+  "gitURL": "https://github.com/anthropics/skills",
+  "gitBranch": "main",
+  "gitPath": "skills/xlsx"
+}

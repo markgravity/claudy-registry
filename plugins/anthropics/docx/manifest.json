@@ -1,0 +1,15 @@
+{
+  "id": "docx@anthropics",
+  "kind": "skill",
+  "name": "Word Documents",
+  "description": "Create, edit, and analyze Word documents with support for tracked changes, styles, and rich formatting.",
+  "author": "anthropics",
+  "tags": ["word", "documents", "office", "writing"],
+  "iconSF": "doc.text",
+  "featured": true,
+  "version": "1.0.0",
+  "homepageURL": "https://github.com/anthropics/skills/tree/main/skills/docx",
+  "gitURL": "https://github.com/anthropics/skills",
+  "gitBranch": "main",
+  "gitPath": "skills/docx"
+}

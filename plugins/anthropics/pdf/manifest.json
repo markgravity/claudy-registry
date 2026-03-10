@@ -1,0 +1,15 @@
+{
+  "id": "pdf@anthropics",
+  "kind": "skill",
+  "name": "PDF",
+  "description": "Read, create, merge, split, and extract data from PDF files using Claude's document tools.",
+  "author": "anthropics",
+  "tags": ["pdf", "documents", "reading", "extraction"],
+  "iconSF": "doc.richtext",
+  "featured": true,
+  "version": "1.0.0",
+  "homepageURL": "https://github.com/anthropics/skills/tree/main/skills/pdf",
+  "gitURL": "https://github.com/anthropics/skills",
+  "gitBranch": "main",
+  "gitPath": "skills/pdf"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "skill-creator@anthropics",
+  "kind": "skill",
+  "name": "Skill Creator",
+  "description": "Interactive guide that walks you through designing and building new Claude skills from scratch.",
+  "author": "anthropics",
+  "tags": ["skills", "development", "anthropic", "agent"],
+  "iconSF": "wand.and.stars",
+  "featured": false,
+  "version": "1.0.0",
+  "homepageURL": "https://github.com/anthropics/skills/tree/main/skills/skill-creator",
+  "gitURL": "https://github.com/anthropics/skills",
+  "gitBranch": "main",
+  "gitPath": "skills/skill-creator"
+}

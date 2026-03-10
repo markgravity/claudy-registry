@@ -1,0 +1,15 @@
+{
+  "id": "frontend-design@anthropics",
+  "kind": "skill",
+  "name": "Frontend Design",
+  "description": "Design guidance for Claude — avoid generic AI aesthetics and build beautiful, thoughtful UIs with React and Tailwind.",
+  "author": "anthropics",
+  "tags": ["frontend", "design", "ui", "css", "react"],
+  "iconSF": "paintbrush.pointed",
+  "featured": false,
+  "version": "1.0.0",
+  "homepageURL": "https://github.com/anthropics/skills/tree/main/skills/frontend-design",
+  "gitURL": "https://github.com/anthropics/skills",
+  "gitBranch": "main",
+  "gitPath": "skills/frontend-design"
+}
