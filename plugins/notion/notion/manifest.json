@@ -1,0 +1,14 @@
+{
+  "id": "notion@notion",
+  "kind": "mcp",
+  "name": "Notion",
+  "description": "Read and write to Notion workspaces using Anthropic's official hosted Notion MCP server.",
+  "author": "notion",
+  "tags": ["notion", "productivity", "notes", "workspace", "documents"],
+  "iconSF": "doc",
+  "featured": false,
+  "version": "1.0.0",
+  "homepageURL": "https://developers.notion.com/guides/mcp/get-started-with-mcp",
+  "mcpTransport": "http",
+  "mcpUrl": "https://mcp.notion.com/mcp"
+}
